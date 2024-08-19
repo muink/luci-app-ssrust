@@ -73,7 +73,7 @@ return view.extend({
 		var p = '#edit=';
 		if (location.hash.indexOf(p) === 0) {
 			var section_id = location.hash.substring(p.length);
-			var editBtn = document.querySelector('#cbi-shadowsocks-libev-' + section_id + ' button.cbi-button-edit');
+			var editBtn = document.querySelector('#cbi-shadowsocks-rust-' + section_id + ' button.cbi-button-edit');
 			if (editBtn)
 				editBtn.click();
 		}

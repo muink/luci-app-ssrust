@@ -40,29 +40,17 @@ var modes = [
 ];
 
 var methods = [
+	// SIP022 AEAD-2022
+	'2022-blake3-aes-128-gcm',
+	'2022-blake3-aes-256-gcm',
+	'2022-blake3-chacha20-poly1305',
+	'2022-blake3-chacha8-poly1305',
 	// aead
 	'aes-128-gcm',
 	'aes-192-gcm',
 	'aes-256-gcm',
 	'chacha20-ietf-poly1305',
 	'xchacha20-ietf-poly1305',
-	// stream
-	'table',
-	'rc4',
-	'rc4-md5',
-	'aes-128-cfb',
-	'aes-192-cfb',
-	'aes-256-cfb',
-	'aes-128-ctr',
-	'aes-192-ctr',
-	'aes-256-ctr',
-	'bf-cfb',
-	'camellia-128-cfb',
-	'camellia-192-cfb',
-	'camellia-256-cfb',
-	'salsa20',
-	'chacha20',
-	'chacha20-ietf',
 ];
 
 function ucival_to_bool(val) {
@@ -238,8 +226,8 @@ return baseclass.extend({
 		});
 	},
 	option_install_package: function(s, tab) {
-		var bin = s.sectiontype.replace('_', '-'),
-			opkg_package = 'shadowsocks-libev-' + bin, o;
+		var bin = s.sectiontype.replace('_', ''),
+			opkg_package = 'shadowsocks-rust-' + bin, o;
 		if (tab) {
 			o = s.taboption(tab, form.Button, '_install');
 		} else {

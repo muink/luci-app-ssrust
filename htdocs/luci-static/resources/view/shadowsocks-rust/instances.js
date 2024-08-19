@@ -165,7 +165,7 @@ return view.extend({
 					uci.sections(conf)
 					.filter(function(s) { return cfgtypes.indexOf(s['.type']) !== -1; })
 					.forEach(function(s) {
-						var el = document.getElementById('cbi-shadowsocks-libev-' + s['.name'] + '-running');
+						var el = document.getElementById('cbi-shadowsocks-rust-' + s['.name'] + '-running');
 						if (el) {
 							var name = s['.type'] + '.' + s['.name'],
 								running = instances.hasOwnProperty(name)? instances[name].running : false;
