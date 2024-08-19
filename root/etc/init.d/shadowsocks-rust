@@ -13,8 +13,8 @@ START=99
 ss_confdir=/var/etc/shadowsocks-rust
 ss_bindir=/usr/bin
 
-ssrules_uc="/usr/share/ss-rules/ss-rules.uc"
-ssrules_nft="/etc/nftables.d/90-ss-rules.nft"
+ssrules_uc="/usr/share/ssrules/ssrules.uc"
+ssrules_nft="/etc/nftables.d/90-ssrules.nft"
 
 ss_mkjson_server_conf() {
 	local cfgserver
@@ -36,6 +36,7 @@ ss_mkjson_server_conf_() {
 	[ -z "$password" ] || json_add_string password "$password"
 	[ -z "$plugin" ] || json_add_string plugin "$plugin"
 	[ -z "$plugin_opts" ] || json_add_string plugin_opts "$plugin_opts"
+	[ -z "$plugin_mode" ] || json_add_string plugin_mode "$plugin_mode"
 }
 
 ss_mkjson_ss_local_conf() {
@@ -59,7 +60,7 @@ ss_mkjson_ss_tunnel_conf() {
 ss_xxx() {
 	local cfg="$1"
 	local cfgtype="$2"
-	local bin="$ss_bindir/${cfgtype/_/-}"
+	local bin="$ss_bindir/${cfgtype/_/}"
 	local confjson="$ss_confdir/$cfgtype.$cfg.json"
 
 	[ -x "$bin" ] || return
@@ -242,7 +243,8 @@ validate_common_server_options_() {
 		'key:string' \
 		"method:or($stream_methods, $aead_methods)" \
 		'plugin:string' \
-		'plugin_opts:string'
+		'plugin_opts:string' \
+		'plugin_mode:or("tcp_only", "udp_only", "tcp_and_udp"):tcp_only'
 }
 
 validate_common_client_options_() {

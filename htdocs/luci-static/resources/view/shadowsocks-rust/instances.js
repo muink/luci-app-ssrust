@@ -9,7 +9,7 @@
 'require shadowsocks-rust as ss';
 
 var conf = 'shadowsocks-rust';
-var cfgtypes = ['ss_local', 'ss_redir', 'ss_server', 'ss_tunnel'];
+var cfgtypes = ['ss_local', 'ss_server'];
 
 var callServiceList = rpc.declare({
 	object: 'service',
@@ -44,7 +44,7 @@ return view.extend({
 			var el = form.GridSection.prototype.renderSectionAdd.apply(this, arguments),
 				optionEl = [E('option', { value: '_dummy' }, [_('-- instance type --')])];
 			cfgtypes.forEach(function(t) {
-				optionEl.push(E('option', { value: t }, [t.replace('_', '-')]));
+				optionEl.push(E('option', { value: t }, [t.replace('_', '')]));
 			});
 			var selectEl = E('select', {
 				class: 'cbi-input-select',
@@ -71,7 +71,7 @@ return view.extend({
 			if (stype) {
 				s.sectiontype = stype;
 				return Promise.all([
-					L.resolveDefault(fs.stat('/usr/bin/' + stype.replace('_', '-')), null),
+					L.resolveDefault(fs.stat('/usr/bin/' + stype.replace('_', '')), null),
 					network.getDevices()
 				]).then(L.bind(function(res) {
 					s.tab('general', _('General Settings'));

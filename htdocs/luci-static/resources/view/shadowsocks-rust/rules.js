@@ -16,7 +16,7 @@ function src_dst_option(s /*, ... */) {
 return view.extend({
 	load: function() {
 		return Promise.all([
-			L.resolveDefault(fs.stat('/usr/share/ss-rules'), null),
+			L.resolveDefault(fs.stat('/usr/share/ssrules'), null),
 			uci.load(conf).then(function() {
 				if (!uci.get_first(conf, 'ss_rules')) {
 					uci.set(conf, uci.add(conf, 'ss_rules', 'ss_rules'), 'disabled', '1');

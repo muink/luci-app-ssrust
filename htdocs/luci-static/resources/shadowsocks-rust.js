@@ -12,6 +12,7 @@ var names_options_server = [
 	'password',
 	'plugin',
 	'plugin_opts',
+	'plugin_mode',
 ];
 
 var names_options_client = [
@@ -139,6 +140,7 @@ return baseclass.extend({
 
 		o = optfunc(form.Value, 'server', _('Server'));
 		o.datatype = 'host';
+		o.default = '::';
 		o.size = 16;
 
 		o = optfunc(form.Value, 'server_port', _('Server port'));
@@ -163,6 +165,12 @@ return baseclass.extend({
 		optfunc(form.Value, 'plugin', _('Plugin')).modalonly = true;
 
 		optfunc(form.Value, 'plugin_opts', _('Plugin Options')).modalonly = true;
+
+		o = optfunc(form.ListValue, 'plugin_mode', _('Plugin Mode'));
+		modes.forEach(function(m) {
+			o.value(m);
+		});
+		o.modalonly = true;
 	},
 	options_common: function(s, tab) {
 		var o = s.taboption(tab, form.ListValue, 'mode', _('Mode of operation'));

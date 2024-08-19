@@ -5,37 +5,6 @@ config ss_local
 	option local_port '1080'
 	option timeout '30'
 
-config ss_tunnel
-	option disabled 1
-	option server 'sss0'
-	option local_address '0.0.0.0'
-	option local_port '1090'
-	option tunnel_address 'example.com:80'
-	option mode 'tcp_and_udp'
-	option timeout '60'
-
-config ss_redir hi
-	option disabled 1
-	option server 'sss0'
-	option local_address '0.0.0.0'
-	option local_port '1100'
-	option mode 'tcp_and_udp'
-	option timeout '60'
-	option fast_open 1
-	option verbose 1
-	option reuse_port 1
-
-config ss_redir hj
-	option disabled 1
-	option server 'sss0'
-	option local_address '0.0.0.0'
-	option local_port '1100'
-	option mode 'tcp_and_udp'
-	option timeout '60'
-	option fast_open 1
-	option verbose 1
-	option reuse_port 1
-
 config ss_rules 'ss_rules'
 	option disabled 1
 	option redir_tcp 'hi'
