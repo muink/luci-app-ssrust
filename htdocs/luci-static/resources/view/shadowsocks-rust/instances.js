@@ -6,9 +6,9 @@
 'require fs';
 'require network';
 'require rpc';
-'require shadowsocks-libev as ss';
+'require shadowsocks-rust as ss';
 
-var conf = 'shadowsocks-libev';
+var conf = 'shadowsocks-rust';
 var cfgtypes = ['ss_local', 'ss_redir', 'ss_server', 'ss_tunnel'];
 
 var callServiceList = rpc.declare({
@@ -24,7 +24,7 @@ return view.extend({
 
 		m = new form.Map(conf,
 			_('Local Instances'),
-			_('Instances of shadowsocks-libev components, e.g. ss-local, \
+			_('Instances of shadowsocks-rust components, e.g. ss-local, \
 			   ss-redir, ss-tunnel, ss-server, etc.  To enable an instance it \
 			   is required to enable both the instance itself and the remote \
 			   server it refers to.'));
@@ -112,7 +112,7 @@ return view.extend({
 						o = s.taboption('advanced', form.FileUpload, 'acl',
 							_('ACL file'),
 							_('File containing Access Control List'));
-						o.root_directory = '/etc/shadowsocks-libev';
+						o.root_directory = '/etc/shadowsocks-rust';
 					}
 				}, this));
 			}

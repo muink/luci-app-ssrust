@@ -78,7 +78,7 @@ return baseclass.extend({
 		}
 	},
 	values_redir: function(o, xmode) {
-		uci.sections('shadowsocks-libev', 'ss_redir', function(sdata) {
+		uci.sections('shadowsocks-rust', 'ss_redir', function(sdata) {
 			var disabled = ucival_to_bool(sdata['disabled']),
 				sname = sdata['.name'],
 				mode = sdata['mode'] || 'tcp_only';
@@ -90,7 +90,7 @@ return baseclass.extend({
 		o.default = '';
 	},
 	values_serverlist: function(o) {
-		uci.sections('shadowsocks-libev', 'server', function(sdata) {
+		uci.sections('shadowsocks-rust', 'server', function(sdata) {
 			var sname = sdata['.name'],
 				server = sdata['server'],
 				server_port = sdata['server_port'];
@@ -228,7 +228,7 @@ return baseclass.extend({
 				if (sdata['.type'] !== 'ss_server' && n === 'server') {
 					fv = E('a', {
 						class: 'label',
-						href: L.url('admin/services/shadowsocks-libev/servers') + '#edit=' + v,
+						href: L.url('admin/services/shadowsocks-rust/servers') + '#edit=' + v,
 						target: '_blank',
 						rel: 'noopener'
 					}, fv);

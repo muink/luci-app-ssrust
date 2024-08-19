@@ -4,9 +4,9 @@
 'require fs';
 'require form';
 'require tools.widgets as widgets';
-'require shadowsocks-libev as ss';
+'require shadowsocks-rust as ss';
 
-var conf = 'shadowsocks-libev';
+var conf = 'shadowsocks-rust';
 
 function src_dst_option(s /*, ... */) {
 	var o = s.taboption.apply(s, L.varargs(arguments, 1));
@@ -92,7 +92,7 @@ return view.extend({
 			_('Dst ip/net forward'),
 			_('Forward through ss-redir for packets with dst address in this list'));
 
-		var dir = '/etc/shadowsocks-libev';
+		var dir = '/etc/shadowsocks-rust';
 		o = s.taboption('dst', form.FileUpload, 'dst_ips_bypass_file',
 			_('Dst ip/net bypass file'),
 			_('File containing ip/net for the purposes as with <em>Dst ip/net bypass</em>'));

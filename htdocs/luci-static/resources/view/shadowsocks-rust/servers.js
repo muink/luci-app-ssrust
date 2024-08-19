@@ -3,9 +3,9 @@
 'require form';
 'require uci';
 'require ui';
-'require shadowsocks-libev as ss';
+'require shadowsocks-rust as ss';
 
-var conf = 'shadowsocks-libev';
+var conf = 'shadowsocks-rust';
 
 return view.extend({
 	render: function() {
