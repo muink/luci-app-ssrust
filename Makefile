@@ -7,11 +7,16 @@
 
 include $(TOPDIR)/rules.mk
 
+PKG_NAME:=luci-app-shadowsocks-rust
 LUCI_NAME:=luci-app-shadowsocks-rust
 LUCI_TITLE:=LuCI Support for shadowsocks-rust
 LUCI_DEPENDS:=+luci-base +shadowsocks-rust-config
 
 PKG_LICENSE:=Apache-2.0
+
+define Package/luci-app-shadowsocks-rust/conffiles
+/etc/config/shadowsocks-rust
+endef
 
 include $(TOPDIR)/feeds/luci/luci.mk
 
