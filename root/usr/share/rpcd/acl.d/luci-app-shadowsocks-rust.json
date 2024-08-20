@@ -2,6 +2,9 @@
 	"luci-app-shadowsocks-rust": {
 		"description": "Grant service list access to LuCI app shadowsocks-rust",
 		"read": {
+			"file": {
+				"/usr/bin/ssservice genkey --encrypt-method *": [ "exec" ]
+			},
 			"ubus": {
 				"service": [ "list" ]
 			},
