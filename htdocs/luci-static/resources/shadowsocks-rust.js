@@ -158,9 +158,9 @@ return baseclass.extend({
 		o.password = true;
 		o.size = 12;
 		o.handleGenKey = function() {
-			var idPrefix = 'widget.cbid.%s.%s.'.format(this.config, this.section.section).replace(/\./g, '\\.'),
-			method = document.querySelector('#' + idPrefix + 'method').value,
-			out = document.querySelector('#' + idPrefix + this.option);
+			var section_id = this.section.section,
+			method = this.section.getOption('method').formvalue(section_id),
+			out = this.map.findElement('id', 'widget.cbid.shadowsocks-rust.%s.password'.format(section_id));
 
 			return fs.exec('/usr/bin/ssservice', [ 'genkey', '--encrypt-method', method ]).then(function(res) {
 				out.value = res.stdout || '';
