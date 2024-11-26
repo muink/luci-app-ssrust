@@ -269,7 +269,7 @@ return baseclass.extend({
 		o.inputtitle = _('Install package ' + opkg_package);
 		o.inputstyle = 'apply';
 		o.onclick = function() {
-			window.open(L.url('admin/system/opkg') +
+			window.open(L.url('admin/system/package-manager') +
 				'?query=' + opkg_package, '_blank', 'noopener');
 		};
 	},
